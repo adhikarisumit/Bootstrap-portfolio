@@ -1,21 +1,245 @@
-@media only screen and (max-width:991px) {
-   .title1{
-   justify-self: center;
+/* Mobile First Responsive Design */
+
+/* Extra Small devices (phones, 576px and down) */
+@media only screen and (max-width: 575.98px) {
+   .title1 {
+      text-align: center;
+      margin-bottom: 2rem;
    }
-   .flex{
+   
+   .hero-image {
+      height: 250px !important;
+      width: 250px !important;
+   }
+   
+   .about-image {
+      height: 250px !important;
+      width: 250px !important;
+   }
+   
+   .sec-title {
+      font-size: 1.8rem !important;
+   }
+   
+   .hero-buttons .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+   }
+   
+   .about-stats .col-4 {
+      margin-bottom: 2rem;
+   }
+   
+   .project-overlay {
+      padding: 15px;
+   }
+   
+   .project-overlay h5 {
+      font-size: 1.2rem;
+   }
+   
+   .project-overlay p {
+      font-size: 0.9rem;
+   }
+   
+   .contact-form {
+      padding: 1.5rem;
+   }
+   
+   .scroll-to-top {
+      bottom: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+   }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+   .title1 {
+      text-align: center;
+      margin-bottom: 2rem;
+   }
+   
+   .hero-image {
+      height: 300px !important;
+      width: 300px !important;
+   }
+   
+   .about-image {
+      height: 300px !important;
+      width: 300px !important;
+   }
+   
+   .sec-title {
+      font-size: 2rem !important;
+   }
+   
+   .hero-buttons .btn {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+   }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+   .title1 {
+      justify-self: center;
+      text-align: left;
+   }
+   
+   .hero-image {
+      height: 350px !important;
+      width: 350px !important;
+   }
+   
+   .about-image {
+      height: 320px !important;
+      width: 320px !important;
+   }
+   
+   .sec-title {
+      font-size: 2.2rem !important;
+   }
+   
+   .hero-buttons .btn {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+   }
+   
+   .about-stats .col-4 {
+      margin-bottom: 1.5rem;
+   }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+   .title1 {
+      text-align: left;
+   }
+   
+   .hero-image {
+      height: 400px !important;
+      width: 400px !important;
+   }
+   
+   .about-image {
+      height: 350px !important;
+      width: 350px !important;
+   }
+   
+   .sec-title {
+      font-size: 2.5rem !important;
+   }
+   
+   .hero-buttons .btn {
+      display: inline-block;
+      margin-right: 1rem;
+   }
+   
+   .about-stats .col-4 {
+      margin-bottom: 0;
+   }
+}
+
+/* Common responsive adjustments */
+@media only screen and (max-width: 991.98px) {
+   .flex {
       margin: 16px 0px 0px 0px !important;
    }
-   .footer1{
+   
+   .footer1 {
       text-align: center;
    }
-   .sec-title{
-      font-size: 20px;
-   }
-   .offers{
+   
+   .offers {
       margin-top: 25px;
       padding-top: 10px !important;
    }
+   
+   .costum-icon {
+      flex-direction: row;
+   }
+   
+   .navbar-nav {
+      text-align: center;
+      margin-top: 1rem;
+   }
+   
+   .navbar-nav .nav-item {
+      margin: 0.5rem 0;
+   }
+   
+   .first-section {
+      padding-top: 120px;
+      text-align: center;
+   }
+   
+   .about-section {
+      text-align: center;
+   }
+   
+   .skills-section .row > div {
+      margin-bottom: 2rem;
+   }
+   
+   .services-section .row > div {
+      margin-bottom: 2rem;
+   }
+   
+   .projects-section .row > div {
+      margin-bottom: 2rem;
+   }
 }
-@media only screen and (min-width:992px){
 
+/* Landscape orientation adjustments */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+   .first-section {
+      min-height: auto;
+      padding: 2rem 0;
+   }
+   
+   .hero-image {
+      height: 200px !important;
+      width: 200px !important;
+   }
+   
+   .about-image {
+      height: 200px !important;
+      width: 200px !important;
+   }
+}
+
+/* High DPI displays */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), 
+       only screen and (min-resolution: 192dpi) {
+   .hero-image,
+   .about-image {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+   }
+}
+
+/* Print styles */
+@media print {
+   .scroll-to-top,
+   .navbar,
+   .hero-buttons {
+      display: none !important;
+   }
+   
+   .first-section {
+      padding-top: 0;
+   }
+   
+   .bg-light {
+      background-color: white !important;
+   }
+   
+   .text-danger {
+      color: #000 !important;
+   }
 }

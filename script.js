@@ -77,43 +77,7 @@ scrollToTopBtn.addEventListener("click", () => {
     });
 });
 
-// Form Validation
-const form = document.querySelector('.contact-form');
-if (form) {
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        if (form.checkValidity()) {
-            // Form is valid, you can submit it here
-            showSuccessMessage();
-            form.reset();
-            form.classList.remove('was-validated');
-        } else {
-            form.classList.add('was-validated');
-        }
-    });
-}
-
-// Show success message
-function showSuccessMessage() {
-    const successAlert = document.createElement('div');
-    successAlert.className = 'alert alert-success alert-dismissible fade show mt-3';
-    successAlert.innerHTML = `
-        <i class="fas fa-check-circle me-2"></i>
-        Thank you! Your message has been sent successfully. I'll get back to you soon.
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    form.parentNode.insertBefore(successAlert, form.nextSibling);
-    
-    // Auto-remove after 5 seconds
-    setTimeout(() => {
-        if (successAlert.parentNode) {
-            successAlert.remove();
-        }
-    }, 5000);
-}
+// Google Form is now embedded directly - no JavaScript needed for form handling
 
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
@@ -262,4 +226,77 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 150);
         });
     });
+    
+    // Initialize admin system
+    initializeAdminSystem();
 });
+
+// Admin Authentication System
+const ADMIN_PASSWORD = 'C242N012b';
+
+// Initialize admin functionality
+function initializeAdminSystem() {
+    const adminEyeIcon = document.getElementById('adminEyeIcon');
+    const adminModal = new bootstrap.Modal(document.getElementById('adminModal'));
+    const authenticateBtn = document.getElementById('authenticateBtn');
+    const adminPassword = document.getElementById('adminPassword');
+    const passwordError = document.getElementById('passwordError');
+
+    // Admin eye icon click - show password modal
+    if (adminEyeIcon) {
+        adminEyeIcon.addEventListener('click', () => {
+            adminModal.show();
+            adminPassword.value = '';
+            passwordError.style.display = 'none';
+            adminPassword.classList.remove('is-invalid');
+            adminPassword.focus();
+        });
+    }
+
+    // Authenticate button click
+    if (authenticateBtn) {
+        authenticateBtn.addEventListener('click', () => {
+            if (adminPassword.value === ADMIN_PASSWORD) {
+                adminModal.hide();
+                // Redirect to Google Form responses
+                window.open('https://docs.google.com/forms/d/e/1FAIpQLSeRv7m2w5hLLIhaeYbopZs6AqZBBqieH-FdmX3pMxE0GE2ugw/edit#responses', '_blank');
+                // Show success message
+                const successAlert = document.createElement('div');
+                successAlert.className = 'alert alert-success alert-dismissible fade show mt-3';
+                successAlert.innerHTML = `
+                    <i class="fas fa-check-circle me-2"></i>
+                    Access granted! Opening responses...
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                // Insert after the contact form
+                const contactForm = document.querySelector('.contact-form');
+                if (contactForm) {
+                    contactForm.parentNode.insertBefore(successAlert, contactForm.nextSibling);
+                    
+                    // Auto-remove after 5 seconds
+                    setTimeout(() => {
+                        if (successAlert.parentNode) {
+                            successAlert.remove();
+                        }
+                    }, 5000);
+                }
+            } else {
+                passwordError.style.display = 'block';
+                adminPassword.classList.add('is-invalid');
+                adminPassword.focus();
+            }
+        });
+    }
+
+    // Enter key in password field
+    if (adminPassword) {
+        adminPassword.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                authenticateBtn.click();
+            }
+        });
+    }
+}
+
+
